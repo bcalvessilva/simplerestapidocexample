@@ -12,73 +12,73 @@ info:
 host: "localhost:8080"
 basePath: "/v1"
 tags:
-- name: "users"
-  description: "Operações de registro de usuário"
-  externalDocs:
-    description: "Saiba mais"
-    url: "http://developers.curtaocodigo.com"
+  - name: "users"
+    description: "Operações de registro de usuário"
+    externalDocs:
+      description: "Saiba mais"
+      url: "http://developers.curtaocodigo.com"
 schemes:
-- "https"
-- "http"
+  - "https"
+  - "http"
 paths:
   /users:
     get:
       tags:
-      - "users"
+        - "users"
       summary: "Buscar usuários"
       description: "Retorna usuários"
       operationId: "getUsers"
       produces:
-      - "application/json"
+        - "application/json"
       responses:
         "200":
           description: "Usuários retornado com sucesso"
           schema:
             $ref: "#/definitions/ArrayOfUsers"
       security:
-      - api_key: []
+        - api_key: []
     post:
       tags:
-      - "users"
+        - "users"
       summary: "Cadastrar um novo usuário"
       description: ""
       operationId: "addUser"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Usuário a ser cadastrado na requisição"
-        required: true
-        schema:
-          $ref: "#/definitions/CreateUser"
+        - in: "body"
+          name: "body"
+          description: "Usuário a ser cadastrado na requisição"
+          required: true
+          schema:
+            $ref: "#/definitions/CreateUser"
       responses:
         "201":
           description: "Usuário cadastrado com sucesso"
         "422":
           description: "Informações inválidas de cadastro de usuário"
       security:
-      - user_registration_auth:
-        - "write:users"
-        - "read:users"
+        - user_registration_auth:
+            - "write:users"
+            - "read:users"
   /users/{userId}:
     get:
       tags:
-      - "users"
+        - "users"
       summary: "Buscar usuário por ID"
       description: "Returna um usuário"
       operationId: "getUserById"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "userId"
-        in: "path"
-        description: "ID do usuário a retornar"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: "userId"
+          in: "path"
+          description: "ID do usuário a retornar"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
         "200":
           description: "Usuário retornado com sucesso"
@@ -89,30 +89,30 @@ paths:
         "404":
           description: "Usuário não encontrado"
       security:
-      - api_key: []
+        - api_key: []
     patch:
       tags:
-      - "users"
+        - "users"
       summary: "Atualizar informações específicas do usuário"
       description: "Serao atualizados apenas o nome e a idade"
       operationId: "updateUserInfo"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "userId"
-        in: "path"
-        description: "ID do usuário a atualizar"
-        required: true
-        type: "integer"
-        format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Usuário a ser atualizado na requisição"
-        required: true
-        schema:
-          $ref: "#/definitions/PatchUser"
+        - name: "userId"
+          in: "path"
+          description: "ID do usuário a atualizar"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          description: "Usuário a ser atualizado na requisição"
+          required: true
+          schema:
+            $ref: "#/definitions/PatchUser"
       responses:
         "200":
           description: "Usuário atualizado com sucesso"
@@ -123,28 +123,28 @@ paths:
         "422":
           description: "Informações inválidas de atualização de usuário"
       security:
-      - user_registration_auth:
-        - "write:users"
-        - "read:users"
+        - user_registration_auth:
+            - "write:users"
+            - "read:users"
     delete:
       tags:
-      - "users"
+        - "users"
       summary: "Remover um usuário"
       description: ""
       operationId: "deleteUser"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "api_key"
-        in: "header"
-        required: false
-        type: "string"
-      - name: "userId"
-        in: "path"
-        description: "ID para remover um usuário"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: "api_key"
+          in: "header"
+          required: false
+          type: "string"
+        - name: "userId"
+          in: "path"
+          description: "ID para remover um usuário"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
         "200":
           description: "Usuário removido com sucesso"
@@ -153,32 +153,32 @@ paths:
         "404":
           description: "Usuário não encontrado"
       security:
-      - user_registration_auth:
-        - "write:users"
-        - "read:users"
+        - user_registration_auth:
+            - "write:users"
+            - "read:users"
     put:
       tags:
-      - "users"
+        - "users"
       summary: "Atualizar um usuário"
       description: ""
       operationId: "updateUser"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "userId"
-        in: "path"
-        description: "ID do usuário a atualizar"
-        required: true
-        type: "integer"
-        format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Usuário a ser atualizado na requisição"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
+        - name: "userId"
+          in: "path"
+          description: "ID do usuário a atualizar"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          description: "Usuário a ser atualizado na requisição"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
       responses:
         "200":
           description: "Usuário atualizado com sucesso"
@@ -189,9 +189,9 @@ paths:
         "422":
           description: "Informações inválidas de atualização de usuário"
       security:
-      - user_registration_auth:
-        - "write:users"
-        - "read:users"
+        - user_registration_auth:
+            - "write:users"
+            - "read:users"
 securityDefinitions:
   user_registration_auth:
     type: "oauth2"
@@ -208,7 +208,7 @@ definitions:
   CreateUser:
     type: "object"
     required:
-    - "name"
+      - "name"
     properties:
       name:
         type: "string"
@@ -221,20 +221,20 @@ definitions:
         type: "string"
         description: "grupo do usuário"
         enum:
-        - "user"
-        - "manager"
-        - "admin"
+          - "user"
+          - "manager"
+          - "admin"
       status:
         type: "string"
         description: "status do usuário"
         enum:
-        - "enabled"
-        - "disabled"
-        - "pending_approval"
+          - "enabled"
+          - "disabled"
+          - "pending_approval"
   PatchUser:
     type: "object"
     required:
-    - "name"
+      - "name"
     properties:
       name:
         type: "string"
@@ -246,7 +246,7 @@ definitions:
   User:
     type: "object"
     required:
-    - "name"
+      - "name"
     properties:
       id:
         type: "integer"
@@ -263,16 +263,16 @@ definitions:
         type: "string"
         description: "grupo do usuário"
         enum:
-        - "user"
-        - "manager"
-        - "admin"
+          - "user"
+          - "manager"
+          - "admin"
       status:
         type: "string"
         description: "status do usuário"
         enum:
-        - "enabled"
-        - "disabled"
-        - "pending_approval"
+          - "enabled"
+          - "disabled"
+          - "pending_approval"
   ArrayOfUsers:
     type: array
     items:
