@@ -9,9 +9,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>br.com.curtaocodigo.simplerestapidocexample</groupId>
-	<artifactId>SimpleRESTAPIDocExample</artifactId>
+	<artifactId>simplerestapidocexample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SimpleRESTAPIDocExample</name>
+	<name>simplerestapidocexample</name>
 	<description>SimpleRESTAPIDocExample initial project </description>
 	<properties>
 		<java.version>11</java.version>
@@ -60,7 +60,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${parent.version}</version>
+				<version>${project.parent.version}</version>
 			</plugin>
 		</plugins>
 	</build>
